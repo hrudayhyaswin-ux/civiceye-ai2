@@ -16,7 +16,7 @@ AI-Powered Multilingual Civic Grievance Intelligence Platform
 ### Technologies
 
 * Flask or Django REST Framework
-* PostgreSQL / MongoDB
+* PostgreSQL / MangoDB
 
 ---
 
@@ -26,7 +26,6 @@ AI-Powered Multilingual Civic Grievance Intelligence Platform
 
 * OpenRouter
 * Hugging Face
-* Bhashini
 * Python
 
 ---
