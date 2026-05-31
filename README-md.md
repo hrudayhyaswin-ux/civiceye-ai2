@@ -4,7 +4,7 @@
 
 ### Deployment links 
 
-  **Citizen login - https://civiceye-v2.vercel.app (version2) working **
+  **Citizen login - https://civiceye-citizen.vercel.app(version2) working **
   
   Citizen login - https://citizen-app-olive.vercel.app (version1)
 
