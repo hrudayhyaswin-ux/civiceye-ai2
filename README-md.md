@@ -52,11 +52,9 @@ CivicEye AI focuses on the quality and intelligence of grievance intake. It addr
 | Admin dashboard | React, Vite, Tailwind CSS, Chart.js or Plotly |
 | Backend API | Flask or Django REST Framework |
 | Database | MongoDB Atlas or PostgreSQL / MySQL |
-| Voice and multilingual support | Bhashini, optional AssemblyAI fallback  |
+| Voice and multilingual support | optional AssemblyAI fallback  |
 | AI backbone | OpenRouter with structured outputs  |
-| NLP fallback | Hugging Face Inference API  |
 | Maps / geocoding | Google Maps API or OpenStreetMap Nominatim  |
-| Authentication | JWT |
 | File uploads | Cloudinary |
 | Deployment | Vercel, Render, Railway |
 | Collaboration | GitHub, Postman, Figma |
