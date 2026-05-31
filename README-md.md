@@ -4,7 +4,8 @@
 
 ### Deployment links 
 
-  **Citizen login - http://192.168.106.63:5173 (version2) working **
+  **Citizen login - https://civiceye-v2.vercel.app (version2) working **
+  
   Citizen login - https://citizen-app-olive.vercel.app (version1)
 
 
