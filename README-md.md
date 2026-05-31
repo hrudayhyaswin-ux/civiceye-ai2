@@ -88,9 +88,6 @@ CivicEye AI India does not compete with existing grievance systems by replacing 
 
 Single-page civic grievance platform with citizen login, admin login, Telugu voice filing, AI-assisted classification, department routing, SLA guidance, and live complaint tracking.
 
-## Project path
-Open this folder:
-- **/Users/konthamsaisriharshith/Desktop/Hack/civiceye-ai**
 
 ## Run the project
 
