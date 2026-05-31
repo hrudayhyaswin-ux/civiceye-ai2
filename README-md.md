@@ -4,7 +4,10 @@
 
 ### Deployment links 
 
- Citizen login - https://citizen-app-olive.vercel.app
+  Citizen login - http://192.168.106.63:5173 (version2) working 
+ Citizen login - https://citizen-app-olive.vercel.app (version1)
+
+
  
 
 ## Focus Area
