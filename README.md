@@ -7,6 +7,94 @@ CivicEye empowers citizens to report civic issues — potholes, broken streetlig
 
 ---
 
+# Deployment Links
+
+### Citizen Portal (Version 2 — Current)
+
+https://civiceye-citizen.vercel.app
+
+### Citizen Portal (Version 1)
+
+https://citizen-app-olive.vercel.app
+
+---
+
+# Focus Area
+
+**National Level — India**
+
+India already operates large-scale grievance systems and is actively moving toward multilingual and multimodal citizen services. CivicEye AI is designed as an intelligent grievance enhancement layer supporting this transition.
+
+---
+
+# Problem Statement
+
+Despite existing grievance systems, many citizens still face challenges:
+
+* Difficulty selecting the correct department
+* Language barriers
+* Low digital literacy
+* Poorly structured complaints
+* Duplicate complaints
+* Large complaint volumes causing slower processing
+
+These challenges become more significant because of India's linguistic diversity and scale.
+
+---
+
+# Proposed Solution
+
+CivicEye AI acts as an intelligent civic complaint layer.
+
+Citizens can file complaints using:
+
+* Voice
+* Text
+* Images
+* Location information
+* Multiple Indian languages
+
+The platform performs:
+
+* Speech-to-text conversion
+* Complaint normalization
+* Classification
+* Department routing
+* Priority scoring
+* Duplicate detection
+
+The goal is not replacing existing systems but improving complaint quality and processing.
+
+---
+
+# Unique Features
+
+## Voice First Filing
+
+Supports complaint filing using Telugu, Hindi, English, and mixed languages.
+
+## AI Department Mapping
+
+Suggests appropriate departments automatically.
+
+## Complaint Summarization
+
+Converts lengthy complaints into operational summaries.
+
+## Duplicate Detection
+
+Groups similar complaints into broader incidents.
+
+## Priority Scoring
+
+Highlights urgent public issues faster.
+
+## National Analytics
+
+Enables complaint pattern analysis across departments and regions.
+
+---
+
 ## ✨ Features
 
 - 📍 **Geotagged Issue Reporting** — Citizens pin issues on a live map
