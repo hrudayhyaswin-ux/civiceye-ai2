@@ -230,6 +230,6 @@ Please maintain a respectful environment.
 
 ---
 
-Thank you for contributing to CivicEye 🚀
+Thank you for contributing to CivicEye Technical Project🚀
 
 
