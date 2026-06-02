@@ -1,227 +1,235 @@
-Contributing to CivicEye
+# Contributing to CivicEye
+
 First off, thank you for considering contributing to CivicEye 🎉
+
 CivicEye aims to improve civic issue reporting and resolution through AI-powered workflows, and contributions from the community help make the platform better, more reliable, and more impactful.
 
+---
 
-Table of Contents
+# Table of Contents
 
-Getting Started
-Project Setup
-How to Contribute
-Development Guidelines
-Commit Guidelines
-Reporting Issues
-Pull Request Process
-Code of Conduct
+* Getting Started
+* Project Setup
+* How to Contribute
+* Development Guidelines
+* Commit Guidelines
+* Reporting Issues
+* Pull Request Process
+* Code of Conduct
 
+---
 
+# Getting Started
 
-Getting Started
 Before contributing, ensure you have:
 
-Git installed
-Python 3.10+ installed
-Node.js and npm installed
-Basic understanding of the project architecture
+* Git installed
+* Python 3.10+ installed
+* Node.js and npm installed
+* Basic understanding of the project architecture
 
+---
 
+# Project Setup
 
-Project Setup
+## 1. Fork and Clone Repository
 
-1. Fork and Clone Repository
-
+```bash
 git clone https://github.com/yourusername/civiceye.git
 cd civiceye
+```
 
+## 2. Create Virtual Environment
 
+### Windows
 
-2. Create Virtual Environment
-
-Windows
-
+```bash
 python -m venv venv
 venv\Scripts\activate
+```
 
+### macOS / Linux
 
-
-macOS / Linux
-
+```bash
 python3 -m venv venv
 source venv/bin/activate
+```
 
+## 3. Install Backend Dependencies
 
-
-3. Install Backend Dependencies
-
+```bash
 pip install -r requirements.txt
+```
 
+## 4. Install Frontend Dependencies
 
-
-4. Install Frontend Dependencies
-
+```bash
 cd frontend
 npm install
+```
 
+## 5. Run Development Environment
 
-
-5. Run Development Environment
 Backend:
 
+```bash
 python app.py
-
+```
 
 Frontend:
 
+```bash
 npm run dev
+```
 
+---
 
+# How to Contribute
 
+1. Fork the repository
 
-How to Contribute
+2. Create a new branch
 
-
-Fork the repository
-
-
-Create a new branch
-
-
-
+```bash
 git checkout -b feature/your-feature-name
+```
 
+3. Make your changes
 
+4. Commit your changes
 
-
-Make your changes
-
-
-Commit your changes
-
-
-
+```bash
 git commit -m "Add: meaningful description"
+```
 
+5. Push changes
 
-
-Push changes
-
-
+```bash
 git push origin feature/your-feature-name
+```
 
+6. Open a Pull Request
 
+---
 
-Open a Pull Request
+# Development Guidelines
 
+## Code Quality
 
+* Follow PEP 8 for Python code
+* Write clean, modular code
+* Maintain consistent naming conventions
+* Keep functions small and reusable
+* Add comments where necessary
 
-Development Guidelines
+## Frontend Guidelines
 
-Code Quality
+* Keep components reusable
+* Follow existing folder structure
+* Use Tailwind utility classes consistently
 
-Follow PEP 8 for Python code
-Write clean, modular code
-Maintain consistent naming conventions
-Keep functions small and reusable
-Add comments where necessary
+## Backend Guidelines
 
+* Keep APIs RESTful
+* Validate all inputs
+* Handle errors properly
+* Write reusable services
 
-Frontend Guidelines
+## AI Guidelines
 
-Keep components reusable
-Follow existing folder structure
-Use Tailwind utility classes consistently
+* Maintain structured outputs
+* Document prompt changes
+* Ensure fallback mechanisms work correctly
 
+---
 
-Backend Guidelines
+# Commit Guidelines
 
-Keep APIs RESTful
-Validate all inputs
-Handle errors properly
-Write reusable services
-
-
-AI Guidelines
-
-Maintain structured outputs
-Document prompt changes
-Ensure fallback mechanisms work correctly
-
-
-
-Commit Guidelines
 Use clear commit messages.
+
 Examples:
 
+```text
 feat: add complaint classification endpoint
 
 fix: resolve duplicate complaint detection bug
 
 docs: update setup instructions
-
+```
 
 Avoid:
 
+```text
 update stuff
 
 changes
 
 fixed issue
+```
 
+---
 
+# Reporting Issues
 
-
-Reporting Issues
 When creating issues:
 
-Provide clear descriptions
-Include reproduction steps
-Mention expected behavior
-Mention actual behavior
-Add screenshots/logs when helpful
+* Provide clear descriptions
+* Include reproduction steps
+* Mention expected behavior
+* Mention actual behavior
+* Add screenshots/logs when helpful
 
+---
 
+# Pull Request Process
 
-Pull Request Process
 Before submitting:
 
-Ensure code builds successfully
-Test your changes
-Update documentation if required
-Resolve merge conflicts
+* Ensure code builds successfully
+* Test your changes
+* Update documentation if required
+* Resolve merge conflicts
 
 Pull Requests should include:
 
-Description of changes
-Screenshots (if UI changes)
-Testing details
+* Description of changes
+* Screenshots (if UI changes)
+* Testing details
 
+---
 
+# Security Guidelines
 
-Security Guidelines
 Please do not commit:
 
-API keys
-Secrets
-Environment files
-Credentials
+* API keys
+* Secrets
+* Environment files
+* Credentials
 
 Use:
 
+```text
 .env
 .env.local
 .env.production
+```
 
+inside `.gitignore`
 
-inside .gitignore
+---
 
+# Code of Conduct
 
-Code of Conduct
 Please maintain a respectful environment.
 
-Be professional
-Be constructive
-Respect differing opinions
-Avoid harassment or abusive behavior
+* Be professional
+* Be constructive
+* Respect differing opinions
+* Avoid harassment or abusive behavior
 
+---
 
 Thank you for contributing to CivicEye 🚀
+
+
