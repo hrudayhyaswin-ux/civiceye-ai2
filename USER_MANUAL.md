@@ -38,7 +38,7 @@ Type your complaint in any supported language.
 2. Speak naturally and clearly.
 3. The system automatically converts your speech into text.
 
-#### Image Upload
+#### Proof image Upload
 Upload relevant images such as:
 - Road damage.
 - Garbage accumulation.
