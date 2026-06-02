@@ -151,12 +151,3 @@ Try the following:
 
 ## Support
 For technical assistance, contact the CivicEye AI India development team through the platform's official support channel.
-
-## Writing Improvements Made
-This version improves the original manual by:
-- Using clear section headings for easier navigation.
-- Correcting grammar and formatting.
-- Turning raw notes into step-by-step instructions.
-- Separating citizen and administrator workflows.
-- Presenting supported features in table format for readability.
-- Expanding troubleshooting guidance for common issues.
