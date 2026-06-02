@@ -1,24 +1,63 @@
-# API Flow
+## Complaint Management API Flow
 
-## Submit Complaint
+### 1. Create Complaint (Citizen)
 
+**Endpoint:**
 `POST /api/complaints`
 
-1. Citizen app sends title, description, address, coordinates, language, and optional attachments.
-2. Backend validates required fields.
-3. Backend calls `POST /analyze` on the AI service.
-4. Complaint is stored with AI category, department, priority, summary, and duplicate confidence.
-5. Response returns `ticket_id` for tracking.
+**Process:**
 
-## Track Complaint
+* Citizen submits complaint details
+* Backend validates incoming data
+* Complaint is stored in the database
+* Backend sends complaint data to AI services for analysis via:
 
-`GET /api/complaints/<ticket_id>`
+`POST /ai/classify` *(along with related AI processing steps)*
 
-Returns public complaint status, department, priority, and timeline.
+**AI Response Includes:**
 
-## Admin Dashboard
+* Complaint category
 
+* Extracted entities
+
+* Priority score / priority label
+
+* Potential duplicate complaints *(optional)*
+
+* Backend updates the complaint record with AI-generated insights
+
+---
+
+### 2. Track Complaint Status
+
+**Endpoint:**
+`GET /api/complaints/:id`
+
+**Purpose:**
+
+* Retrieve complaint details
+* Track complaint progress and current status
+
+---
+
+### 3. Admin Operations
+
+#### Get All Complaints
+
+**Endpoint:**
 `GET /api/admin/complaints`
 
-Supports `status`, `priority`, `department`, and `q` filters.
+**Purpose:**
+
+* Retrieve all complaints for review and management
+
+#### Update Complaint Status
+
+**Endpoint:**
+`PATCH /api/admin/complaints/:id/status`
+
+**Purpose:**
+
+* Modify complaint status
+* Update workflow progress (Open, In Progress, Resolved, etc.)
 
