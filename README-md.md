@@ -47,7 +47,7 @@ CivicEye AI acts as an intelligent civic complaint layer.
 
 Citizens can file complaints using:
 
-* Voice
+* voice
 * Text
 * Images
 * Location information
