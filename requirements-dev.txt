@@ -1,0 +1,10 @@
+ruff
+mypy
+bandit
+pytest
+pytest-cov
+pre-commit
+vulture
+semgrep
+pyupgrade
+pip-audit
