@@ -1,0 +1,25 @@
+rules:
+  - id: python-flask-debug-enabled
+    languages: [python]
+    severity: ERROR
+    message: Do not run Flask with debug=True outside local-only development.
+    patterns:
+      - pattern: $APP.run(..., debug=True, ...)
+
+  - id: python-hardcoded-secret-key
+    languages: [python]
+    severity: WARNING
+    message: Avoid hardcoded secret keys; load them from environment or a secret manager.
+    patterns:
+      - pattern-either:
+          - pattern: SECRET_KEY = "..."
+          - pattern: SECRET_KEY = '...'
+
+  - id: javascript-localstorage-token
+    languages: [javascript, jsx]
+    severity: WARNING
+    message: Storing auth tokens in localStorage increases exposure to XSS.
+    pattern-either:
+      - pattern: localStorage.setItem("token", ...)
+      - pattern: localStorage.setItem('token', ...)
+

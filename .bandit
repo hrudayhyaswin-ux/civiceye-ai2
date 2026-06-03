@@ -1,0 +1,4 @@
+[bandit]
+exclude_dirs = .git,.venv,venv,node_modules,dist,build,backend/tests,tests
+skips = B101
+

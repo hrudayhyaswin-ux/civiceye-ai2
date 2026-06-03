@@ -1,0 +1,16 @@
+title = "CivicEye AI Gitleaks Config"
+
+[allowlist]
+description = "Allow examples and documentation placeholders."
+paths = [
+  '''\.env\.example$''',
+  '''README\.md$''',
+  '''docs/.*''',
+  '''specs/.*'''
+]
+regexes = [
+  '''example[_-]?key''',
+  '''changeme''',
+  '''your[_-]?(api|secret|token|key)'''
+]
+

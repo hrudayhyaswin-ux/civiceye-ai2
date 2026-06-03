@@ -1,0 +1,23 @@
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]
+pythonpath = ["backend", "ai-service"]
+addopts = "--strict-markers --strict-config"
+
+[tool.coverage.run]
+branch = true
+source = ["backend", "ai-service"]
+omit = [
+  "*/tests/*",
+  "*/__pycache__/*",
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+fail_under = 60
+
+[tool.vulture]
+paths = ["backend", "ai-service", "scripts"]
+min_confidence = 80
+exclude = ["*/tests/*", "*/.venv/*", "*/node_modules/*"]
+
