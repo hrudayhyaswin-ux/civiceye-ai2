@@ -18,12 +18,14 @@ python:lint:
   stage: lint
   before_script:
     - python -m pip install --upgrade pip
-    - pip install -r requirements-dev.txt
+    - pip install -r requirements-dev.txt semgrep pyupgrade
   script:
     - flake8 backend ai-service scripts
     - pylint backend ai-service scripts
     - bandit -c .bandit -r backend ai-service
     - vulture backend ai-service scripts --min-confidence 80
+    - semgrep scan --config auto
+    - find backend ai-service -name "*.py" | xargs pyupgrade --py311-plus
 
 python:test:
   image: python:3.12-slim
@@ -32,7 +34,7 @@ python:test:
     - python -m pip install --upgrade pip
     - pip install -r backend/requirements.txt -r ai-service/requirements.txt -r requirements-dev.txt
   script:
-    - pytest --cov=backend --cov=ai-service --cov-report=term-missing --cov-report=xml
+    - pytest --cov=backend --cov=ai-service --cov-report=term-missing --cov-report=xml --cov-fail-under=60
   artifacts:
     when: always
     reports:
@@ -47,9 +49,10 @@ security:audit:
   stage: audit
   before_script:
     - python -m pip install --upgrade pip
-    - pip install pip-audit
+    - pip install pip-audit trufflehog
   script:
     - pip-audit -r backend/requirements.txt -r ai-service/requirements.txt
+    - trufflehog filesystem . --no-update
 
 frontend:build:
   image: node:22-alpine
@@ -57,4 +60,3 @@ frontend:build:
   script:
     - cd frontend/citizen-app && npm ci && npm run build
     - cd ../admin-dashboard && npm ci && npm run build
-
