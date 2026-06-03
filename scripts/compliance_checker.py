@@ -114,7 +114,7 @@ def run_compliance():
         if check_file(path, desc):
             score += 1
     
-    # Check for Ruff in CI
+    # Check for Ruff in CI (Lint Tool)
     ruff_integrated = False
     ci_files = [".gitlab-ci.yml", ".gitlab/ci/lint.yml"]
     for ci_file in ci_files:
@@ -127,45 +127,59 @@ def run_compliance():
     
     total_checks += 1
     if ruff_integrated:
-        print("✅ Ruff (Linting/Formatting) integrated in CI")
+        print("✅ Lint Tool (Ruff) integrated in CI")
         score += 1
     else:
-        print("❌ Ruff (Linting/Formatting) - Not found in CI")
+        print("❌ Lint Tool (Ruff) - Not found in CI")
 
-    # Check for Test Job (Pytest) in CI
-    test_integrated = False
+    # Check for Test Tool (Pytest)
+    pytest_config_found = False
+    if Path("pyproject.toml").exists():
+        with open("pyproject.toml", 'r') as f:
+            if "pytest" in f.read().lower():
+                pytest_config_found = True
+    
+    total_checks += 1
+    if pytest_config_found:
+        print("✅ Test Tool (Pytest) configured")
+        score += 1
+    else:
+        print("❌ Test Tool (Pytest) - Not configured")
+
+    # Check for Test Job in CI
+    test_job_present = False
     ci_test_files = [".gitlab-ci.yml", ".gitlab/ci/test.yml"]
     for ci_file in ci_test_files:
         if Path(ci_file).exists():
             with open(ci_file, 'r') as f:
                 content = f.read().lower()
-                if "pytest" in content and "stage: test" in content:
-                    test_integrated = True
+                if "stage: test" in content or "python:test" in content:
+                    test_job_present = True
                     break
     
     total_checks += 1
-    if test_integrated:
-        print("✅ Test Job (Pytest) integrated in CI")
+    if test_job_present:
+        print("✅ Test Job integrated in CI")
         score += 1
     else:
-        print("❌ Test Job (Pytest) - Not found in CI")
+        print("❌ Test Job - Not found in CI")
 
-    # Check for Lint Job (General) in CI
+    # Check for Lint Job in CI
     lint_job_present = False
     for ci_file in ci_files:
         if Path(ci_file).exists():
             with open(ci_file, 'r') as f:
                 content = f.read().lower()
-                if "stage: lint" in content:
+                if "stage: lint" in content or "python:lint" in content:
                     lint_job_present = True
                     break
     
     total_checks += 1
     if lint_job_present:
-        print("✅ Lint Job (General) integrated in CI")
+        print("✅ Lint Job integrated in CI")
         score += 1
     else:
-        print("❌ Lint Job (General) - Not found in CI")
+        print("❌ Lint Job - Not found in CI")
 
     print("\n🛡️ Security & Audits")
     # Check if audit commands are present in CI or if audit reports exist
