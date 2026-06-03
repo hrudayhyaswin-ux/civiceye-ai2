@@ -106,3 +106,4 @@ A feature is considered complete when:
 # Project Goal
 
 Make civic grievance reporting more accessible, multilingual, and intelligent while supporting existing government grievance ecosystems instead of replacing them.
+
