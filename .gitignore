@@ -12,3 +12,4 @@ instance/
 *.db
 .DS_Store
 .vercel
+
