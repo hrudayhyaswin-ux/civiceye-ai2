@@ -19,6 +19,11 @@ def check_dir(path, description):
     return exists
 
 def run_compliance():
+    # Ensure we are running from the project root (where this script's parent's parent is)
+    script_dir = Path(__file__).resolve().parent
+    project_root = script_dir.parent
+    os.chdir(project_root)
+
     print("🔍 Project Compliance Analysis\n")
     
     score = 0
