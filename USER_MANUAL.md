@@ -119,15 +119,18 @@ The dashboard may display visual analytics such as:
 | Image | Yes |
 | Location | Yes |
 
-## Supported Languages
-CivicEye AI India supports multiple languages for complaint submission.
+# Supported Languages
 
-Examples include:
-- English
-- Hindi
-- Telugu
+CivicEye AI India provides multilingual support to make complaint registration accessible to a wider audience.
 
-Additional languages may also be supported through Bhashini integration.
+Users can submit complaints in languages such as:
+
+* English
+* Hindi
+* Telugu
+
+Through integration with Bhashini, the platform can also support additional Indian languages, enabling broader accessibility and inclusiveness across regions.
+
 
 ## Troubleshooting
 
