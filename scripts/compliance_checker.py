@@ -24,7 +24,7 @@ def run_compliance():
     score = 0
     total_checks = 0
     
-    print("📝 Metadata")
+    print("metadata")
     # Simplistic check for description in README
     total_checks += 1
     if check_file("README.md", "Description (in README.md)"):
@@ -35,16 +35,16 @@ def run_compliance():
     try:
         tags = subprocess.check_output(["git", "tag"]).decode().strip()
         if tags:
-            print("✅ Git Tags found")
+            print("✅ Git Tags")
             score += 1
         else:
-            print("❌ Git Tags - No tags found in repository")
+            print("❌ Git Tags")
             print("How to fix: git tag v1.0.0")
     except Exception:
         print("❌ Git Tags - Could not check tags")
     total_checks += 1
     
-    print("\n📄 Documentation Files")
+    print("\ndocumentation")
     docs = [
         ("README.md", "README.md"),
         ("CONTRIBUTING.md", "CONTRIBUTING.md"),
@@ -56,7 +56,7 @@ def run_compliance():
         if check_file(path, desc):
             score += 1
             
-    print("\n🗂 Repository Health Files")
+    print("\nrepository health")
     health_files = [
         (".gitignore", ".gitignore"),
         (".editorconfig", ".editorconfig"),
@@ -80,7 +80,7 @@ def run_compliance():
                         print("  ❌ License is NOT AGPLv3")
             score += 1
 
-    print("\n🛠 Quality & Tools")
+    print("\nquality & tools")
     tools = [
         ("pyproject.toml", "Ruff/Config"),
         ("pyproject.toml", "Pytest/Config"),
@@ -104,7 +104,7 @@ def run_compliance():
             else:
                 score += 1
 
-    print("\n🤖 Automation & CI")
+    print("\nautomation & CI")
     automation = [
         (".gitlab-ci.yml", "GitLab CI Pipeline"),
         (".pre-commit-config.yaml", "Pre-commit Hooks"),
@@ -192,7 +192,7 @@ def run_compliance():
     else:
         print("Tool: ❌")
 
-    print("\n🛡️ Security & Audits")
+    print("\nsecurity & audits")
     # Check if audit commands are present in CI or if audit reports exist
     audit_integrated = False
     if Path(".gitlab/ci/security.yml").exists():
@@ -208,7 +208,7 @@ def run_compliance():
     else:
         print("❌ Dependency Audit (uv/pip-audit/npm audit) - Not found in CI")
 
-    print("\n📐 Spec-Kit (Spec-Driven Development)")
+    print("\nspec-kit (SDD)")
     spec_kit = [
         (".specify", ".specify/ setup"),
         ("constitution.md", "constitution.md"),
