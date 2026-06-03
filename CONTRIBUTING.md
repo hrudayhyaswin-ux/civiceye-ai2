@@ -127,30 +127,33 @@ git push origin feature/your-feature-name
 
 ## Code Quality
 
-* Follow PEP 8 for Python code
-* Write clean, modular code
-* Maintain consistent naming conventions
-* Keep functions small and reusable
-* Add comments where necessary
+* Adhere to PEP 8 coding standards for Python.
+* Write maintainable and well-structured code.
+* Use clear and consistent naming patterns.
+* Design functions to be concise and reusable.
+* Include meaningful comments and documentation where required.
 
 ## Frontend Guidelines
 
-* Keep components reusable
-* Follow existing folder structure
-* Use Tailwind utility classes consistently
+* Build reusable and scalable UI components.
+* Follow the established project directory structure.
+* Apply Tailwind CSS utility classes consistently across the application.
+* Ensure responsiveness and maintain a clean user interface.
 
 ## Backend Guidelines
 
-* Keep APIs RESTful
-* Validate all inputs
-* Handle errors properly
-* Write reusable services
+* Develop APIs following RESTful design principles.
+* Perform proper validation for all incoming requests.
+* Implement robust error handling and logging.
+* Create reusable business logic and service layers.
 
 ## AI Guidelines
 
-* Maintain structured outputs
-* Document prompt changes
-* Ensure fallback mechanisms work correctly
+* Ensure AI responses follow a consistent structured format.
+* Keep prompt updates and modifications properly documented.
+* Implement reliable fallback and recovery mechanisms.
+* Monitor output quality and maintain response accuracy.
+
 
 ---
 
