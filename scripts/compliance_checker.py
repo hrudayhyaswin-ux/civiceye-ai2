@@ -131,8 +131,9 @@ def run_compliance():
         score += 1
     else:
         print("❌ CI Pipeline — Add Ruff for linting")
+        print("How to fix: uv add --dev ruff && ruff check .")
 
-    print("\n🧪 test")
+    print("\ntest")
     # Check for Test Job in CI
     test_job_present = False
     ci_test_files = [".gitlab-ci.yml", ".gitlab/ci/test.yml"]
@@ -146,10 +147,10 @@ def run_compliance():
     
     total_checks += 1
     if test_job_present:
-        print("✅ Job")
+        print("Job: ✅")
         score += 1
     else:
-        print("❌ Job")
+        print("Job: ❌")
 
     # Check for Test Tool (Pytest)
     pytest_config_found = False
@@ -160,12 +161,12 @@ def run_compliance():
     
     total_checks += 1
     if pytest_config_found:
-        print("✅ Tool")
+        print("Tool: ✅")
         score += 1
     else:
-        print("❌ Tool")
+        print("Tool: ❌")
 
-    print("\n🧹 lint")
+    print("\nlint")
     # Check for Lint Job in CI
     lint_job_present = False
     for ci_file in ci_files:
@@ -178,17 +179,17 @@ def run_compliance():
     
     total_checks += 1
     if lint_job_present:
-        print("✅ Job")
+        print("Job: ✅")
         score += 1
     else:
-        print("❌ Job")
+        print("Job: ❌")
 
     total_checks += 1
     if ruff_integrated:
-        print("✅ Tool")
+        print("Tool: ✅")
         score += 1
     else:
-        print("❌ Tool")
+        print("Tool: ❌")
 
     print("\n🛡️ Security & Audits")
     # Check if audit commands are present in CI or if audit reports exist
