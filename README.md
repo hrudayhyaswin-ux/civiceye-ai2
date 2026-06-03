@@ -44,28 +44,27 @@ These challenges become more significant because of India's linguistic diversity
 
 # Proposed Solution
 
-CivicEye AI acts as an intelligent civic complaint layer.
+CivicEye AI serves as an intelligent civic grievance management platform.
 
-Citizens can file complaints using:
+Citizens can submit complaints through:
 
-* Voice
-* Text
-* Images
-* Location information
-* Multiple Indian languages
+• Voice inputs
+• Text-based reports
+• Image uploads
+• GPS/Location data
+• Support for multiple Indian languages
 
-The platform performs:
+The system automatically performs:
 
-* Speech-to-text conversion
-* Complaint normalization
-* Classification
-* Department routing
-* Priority scoring
-* Duplicate detection
+• Speech-to-text transcription
+• Complaint standardization and cleaning
+• Issue categorization
+• Automated department assignment
+• Severity and priority assessment
+• Duplicate complaint identification
 
-The goal is not replacing existing systems but improving complaint quality and processing.
+The objective is not to replace existing government grievance systems, but to enhance complaint accuracy, streamline processing, and improve response efficiency.
 
----
 
 # Unique Features
 
