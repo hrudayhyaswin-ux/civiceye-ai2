@@ -39,6 +39,7 @@ def run_compliance():
             score += 1
         else:
             print("❌ Git Tags - No tags found in repository")
+            print("How to fix: git tag v1.0.0")
     except Exception:
         print("❌ Git Tags - Could not check tags")
     total_checks += 1
@@ -237,6 +238,15 @@ def run_compliance():
             print("❌ Spec-Kit Feature Specs — No feature specs found.")
         if not Path("LICENSE").exists():
             print("❌ License — Project must be licensed under AGPLv3.")
+        
+        # Check if tags were missing in the score check
+        try:
+            tags = subprocess.check_output(["git", "tag"]).decode().strip()
+            if not tags:
+                print("❌ Git Tags — Every project must have at least one version tag (e.g., v1.0.0)")
+        except:
+            pass
+            
         sys.exit(1)
     else:
         print("\n🎊 Project is fully compliant!")
