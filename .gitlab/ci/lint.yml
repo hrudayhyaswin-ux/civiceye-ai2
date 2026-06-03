@@ -1,0 +1,13 @@
+python:lint:
+  image: python:3.12-slim
+  stage: lint
+  before_script:
+    - python -m pip install --upgrade pip
+    - pip install -r requirements-dev.txt semgrep pyupgrade
+  script:
+    - flake8 backend ai-service scripts
+    - pylint backend ai-service scripts
+    - bandit -c .bandit -r backend ai-service
+    - vulture backend ai-service scripts --min-confidence 80
+    - semgrep scan --config auto
+    - find backend ai-service -name "*.py" | xargs pyupgrade --py311-plus
