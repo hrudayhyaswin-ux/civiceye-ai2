@@ -64,3 +64,4 @@ Public disclosure before a fix is available may put users, systems, or data at u
 
 ## Commitment
 CivicEye AI India appreciates responsible security reporting and values the efforts of individuals who help strengthen the safety of the project.
+
