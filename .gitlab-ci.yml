@@ -1,8 +1,23 @@
 stages:
+  - compliance
   - lint
   - test
   - audit
   - build
+
+compliance:check:
+  image: python:3.12-slim
+  stage: compliance
+  script:
+    - python scripts/compliance_checker.py
+
+pre-commit:check:
+  image: python:3.12-slim
+  stage: compliance
+  before_script:
+    - pip install pre-commit
+  script:
+    - pre-commit run --all-files
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
@@ -53,6 +68,26 @@ security:audit:
   script:
     - pip-audit -r backend/requirements.txt -r ai-service/requirements.txt
     - trufflehog filesystem . --no-update
+
+gitleaks:check:
+  image: 
+    name: zricethezav/gitleaks:latest
+    entrypoint: [""]
+  stage: audit
+  script:
+    - gitleaks detect --source . -v
+
+changelog:check:
+  image: rust:latest
+  stage: audit
+  before_script:
+    - cargo install git-cliff
+  script:
+    - git-cliff --version
+    - git-cliff -o CHANGELOG.md
+  artifacts:
+    paths:
+      - CHANGELOG.md
 
 frontend:build:
   image: node:22-alpine
