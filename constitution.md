@@ -20,3 +20,4 @@
 
 This constitution is the baseline for project decisions. Amendments should be proposed as pull requests with rationale, impact, and migration notes when needed.
 
+
