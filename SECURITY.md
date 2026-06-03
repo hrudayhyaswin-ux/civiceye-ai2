@@ -43,19 +43,26 @@ Actual resolution time may vary depending on the complexity and severity of the 
 ## Recognition
 Responsible reporters may be credited in release notes or project acknowledgements unless anonymity is requested.
 
-## Scope
-The following issues are generally considered in scope:
-- Authentication and authorization flaws.
-- SQL injection and database-related security weaknesses.
-- Cross-site scripting (XSS).
-- Cross-site request forgery (CSRF).
-- Sensitive data exposure.
-- Broken or insecure API endpoints.
 
-The following issues are generally considered out of scope:
-- Vulnerabilities limited solely to third-party dependencies without a demonstrated project-specific impact.
-- Social engineering attacks.
-- Physical security issues.
+## Scope
+
+The following security issues fall within the scope of assessment:
+
+* Weaknesses in authentication and access control mechanisms.
+* SQL injection and other database-related vulnerabilities.
+* Cross-Site Scripting (XSS) attacks.
+* Cross-Site Request Forgery (CSRF) vulnerabilities.
+* Exposure of confidential or sensitive information.
+* Misconfigured, vulnerable, or improperly secured API endpoints.
+
+## Out of Scope
+
+The following issues are generally excluded from the scope:
+
+* Vulnerabilities affecting only third-party libraries or dependencies without proven impact on the application itself.
+* Attacks that rely on social engineering techniques.
+* Physical security threats or unauthorized physical access scenarios.
+
 
 ## Disclosure Policy
 CivicEye AI India follows a responsible disclosure approach. Security researchers and reporters are requested to provide reasonable time for investigation, remediation, and deployment of a fix before making any public disclosure.
