@@ -25,15 +25,17 @@ def now_iso():
 
 
 def fallback_analysis(payload):
-    text = f"{payload.get('title', '')} {payload.get('description', '')}".lower()
+    title = payload.get("title") or ""
+    description = payload.get("description") or ""
+    text = f"{title} {description}".lower()
     priority = "High" if any(word in text for word in ("danger", "accident", "open", "fire", "urgent")) else "Medium"
     hint = payload.get("category_hint") or "Other"
     return {
         "category": hint,
         "department": DEPARTMENT_BY_HINT.get(hint, "General"),
         "priority": priority,
-        "summary": payload.get("description", "")[:180] or payload.get("title", ""),
-        "duplicate_confidence": duplicate_hint(payload.get("description", "")),
+        "summary": description[:180] or title,
+        "duplicate_confidence": duplicate_hint(description),
     }
 
 
@@ -62,6 +64,7 @@ def row_to_dict(row):
     item["location"] = json.loads(item.pop("location_json"))
     item["attachments"] = json.loads(item.pop("attachments_json"))
     item["timeline"] = json.loads(item.pop("timeline_json"))
+    item["voice_note_path"] = item.get("voice_note_path")
     return item
 
 
@@ -73,7 +76,7 @@ def create_complaint(payload):
     voice_path = None
     if voice_note and hasattr(voice_note, "read"):
         ticket_id_temp = generate_ticket_id() # Use a stable ID for the filename
-        upload_dir = os.path.join(current_app.root_path, "..", "uploads", "voice_notes")
+        upload_dir = os.path.join(current_app.root_path, "..", "uploads", "media")
         os.makedirs(upload_dir, exist_ok=True)
         filename = f"{ticket_id_temp}_voice.webm"
         voice_path = os.path.join(upload_dir, filename)
@@ -90,13 +93,13 @@ def create_complaint(payload):
     timeline = [{"label": "Complaint received", "at": created}, {"label": f"Routed to {analysis['department']}", "at": created}]
     
     # Add transcript to description if it exists
-    final_description = payload["description"].strip()
+    final_description = (payload.get("description") or "").strip()
     if analysis.get("transcript"):
         final_description += f"\n\n[Voice Transcript]: {analysis['transcript']}"
 
     record = {
         "ticket_id": ticket_id,
-        "title": payload["title"].strip(),
+        "title": (payload.get("title") or "").strip(),
         "description": final_description,
         "category": analysis["category"],
         "department": analysis["department"],
@@ -104,12 +107,13 @@ def create_complaint(payload):
         "status": "New",
         "summary": analysis["summary"],
         "duplicate_confidence": int(analysis["duplicate_confidence"]),
-        "language": payload.get("language", "en"),
-        "citizen_name": payload.get("citizen_name", ""),
-        "phone": payload.get("phone", ""),
+        "language": payload.get("language") or "en",
+        "citizen_name": payload.get("citizen_name") or "",
+        "phone": payload.get("phone") or "",
         "location_json": json.dumps(location),
-        "attachments_json": json.dumps(payload.get("attachments", [])),
+        "attachments_json": json.dumps(payload.get("attachments") or []),
         "timeline_json": json.dumps(timeline),
+        "voice_note_path": f"{ticket_id}_voice.webm" if voice_path else None,
         "created_at": created,
         "updated_at": created,
     }

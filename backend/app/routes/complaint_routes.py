@@ -25,9 +25,21 @@ def submit_complaint():
         
         # Handle attachments
         attachments = []
+        import os
+        from flask import current_app
+        upload_dir = os.path.join(current_app.root_path, "..", "uploads", "media")
+        os.makedirs(upload_dir, exist_ok=True)
+
         for key in request.files:
             if key.startswith("attachment_"):
-                attachments.append(request.files[key].filename)
+                file = request.files[key]
+                if file.filename:
+                    # Generate a safe filename to prevent overwrites or directory traversal
+                    import uuid
+                    ext = os.path.splitext(file.filename)[1]
+                    safe_name = f"{uuid.uuid4().hex}{ext}"
+                    file.save(os.path.join(upload_dir, safe_name))
+                    attachments.append(safe_name)
         payload["attachments"] = attachments
 
         # Handle voice note

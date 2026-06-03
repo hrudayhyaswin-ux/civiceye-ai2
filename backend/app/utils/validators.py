@@ -1,7 +1,10 @@
 def validate_complaint(payload):
+    missing = []
     if not payload.get("title"):
-        return "Missing required field: title"
+        missing.append("title")
     if not payload.get("description") and not payload.get("voice_note"):
-        return "Missing required field: description (or voice note)"
+        missing.append("description")
+        
+    if missing:
+        return f"Missing required field: {', '.join(missing)}"
     return None
-
