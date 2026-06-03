@@ -94,13 +94,17 @@ Enables complaint pattern analysis across departments and regions.
 
 ---
 
-## ✨ Features
+✨ Features
 
-- 📍 **Geotagged Issue Reporting** — Citizens pin issues on a live map
-- 📸 **Photo Uploads** — Attach images as evidence
-- 🔔 **Status Tracking** — Follow your report from submission to resolution
-- 🏛️ **Authority Dashboard** — Officials view, prioritize, and resolve complaints
-- 🔐 **Secure Auth** — JWT-based authentication for citizens and admins
+📍 Interactive Location-Based Reporting — Citizens can mark and report issues directly on a digital map
+
+📸 Evidence Upload Support — Submit photos to provide visual proof of reported problems
+
+🔔 Real-Time Complaint Monitoring — Track complaint progress from registration to closure
+
+🏛️ Administrative Management Dashboard — Authorities can review, assign, prioritize, and resolve grievances efficiently
+
+🔐 Role-Based Secure Access — JWT-powered authentication system for both citizens and government officials
 
 ---
 
