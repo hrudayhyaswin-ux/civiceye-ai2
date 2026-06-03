@@ -1,23 +1,39 @@
-# CivicEye AI Constitution
+# CivicEye AI Charter
 
-## Principles
+## Core Principles
 
-1. Public-interest outcomes first: features should improve complaint reporting, routing, transparency, or civic response quality.
-2. Privacy by default: collect the minimum useful data, protect personally identifiable information, and avoid exposing secrets in code, logs, screenshots, or fixtures.
-3. Explainable automation: AI-assisted triage should provide human-readable classifications, priorities, and summaries that can be reviewed.
-4. Accessibility and language inclusion: citizen-facing workflows should remain usable across devices, bandwidth levels, and supported languages.
-5. Tested change: meaningful product or safety changes should include tests, specs, or documented verification.
+### Citizen-Centric Impact
+
+All features and enhancements should contribute to better complaint submission, efficient issue routing, greater transparency, or improved civic service delivery.
+
+### Privacy-First Approach
+
+Only essential user data should be collected. Personally identifiable information must be protected, and sensitive data should never be exposed in source code, logs, test datasets, or documentation.
+
+### Transparent AI Decisions
+
+AI-powered complaint analysis should generate understandable summaries, classifications, and priority recommendations that can be reviewed by human operators.
+
+### Inclusive Accessibility
+
+Citizen services should remain accessible across different devices, network conditions, and supported regional languages to ensure broad usability.
+
+### Verified and Reliable Changes
+
+Significant product, security, or AI-related updates should be accompanied by tests, specifications, or documented validation procedures.
+
+---
 
 ## Engineering Standards
 
-- New features start from a short specification under `specs/`.
-- Backend changes should pass pytest, coverage, flake8, pylint, bandit, and dependency audit checks.
-- Frontend changes should build successfully for both Vite applications.
-- Security-sensitive changes should include explicit notes about secrets, authentication, authorization, and data retention.
-- Releases should be tagged with `vMAJOR.MINOR.PATCH` and summarized in `CHANGELOG.md`.
+* New functionality should begin with a concise specification stored under the `specs/` directory.
+* Backend updates should successfully pass testing, code quality, security, and dependency audit checks.
+* Frontend modifications should compile and run correctly across all supported Vite-based applications.
+* Changes affecting security must include documentation covering authentication, authorization, secret management, and data retention considerations.
+* Every release should follow semantic versioning (`vMAJOR.MINOR.PATCH`) and be documented in `CHANGELOG.md`.
 
-## Governance
+---
 
-This constitution is the baseline for project decisions. Amendments should be proposed as pull requests with rationale, impact, and migration notes when needed.
+## Project Governance
 
-
+This charter serves as the guiding framework for project development and decision-making. Proposed amendments should be submitted through pull requests, including a clear justification, expected impact, and migration guidance where applicable.
