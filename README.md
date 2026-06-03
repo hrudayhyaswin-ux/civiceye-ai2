@@ -46,7 +46,7 @@ These challenges become more significant because of India's linguistic diversity
 
 CivicEye AI serves as an intelligent civic grievance management platform.
 
-Citizens can submit complaints through:
+Citizens can file complaints using the following methods:
 
 • Voice inputs
 • Text-based reports
@@ -201,3 +201,4 @@ This project is licensed under the **GNU Affero General Public License v3.0**. S
 ## 👥 Team
 
 Built with ❤️ by a student team passionate about civic technology.
+
