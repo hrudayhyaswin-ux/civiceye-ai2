@@ -123,15 +123,15 @@ def run_compliance():
     if Path(".gitlab/ci/security.yml").exists():
         with open(".gitlab/ci/security.yml", 'r') as f:
             content = f.read()
-            if "pip-audit" in content and "npm audit" in content:
+            if "pip-audit" in content and "npm audit" in content and "uv audit" in content:
                 audit_integrated = True
     
     total_checks += 1
     if audit_integrated:
-        print("✅ Dependency Audit (pip-audit/npm audit) integrated in CI")
+        print("✅ Dependency Audit (uv/pip-audit/npm audit) integrated in CI")
         score += 1
     else:
-        print("❌ Dependency Audit (pip-audit/npm audit) - Not found in CI")
+        print("❌ Dependency Audit (uv/pip-audit/npm audit) - Not found in CI")
 
     print("\n📐 Spec-Kit (Spec-Driven Development)")
     spec_kit = [
@@ -163,6 +163,10 @@ def run_compliance():
             print("❌ Spec-Kit Feature Specs — No feature specs found.")
         if not Path("LICENSE").exists():
             print("❌ License — Project must be licensed under AGPLv3.")
+        sys.exit(1)
+    else:
+        print("\n🎊 Project is fully compliant!")
+        sys.exit(0)
 
 if __name__ == "__main__":
     run_compliance()
