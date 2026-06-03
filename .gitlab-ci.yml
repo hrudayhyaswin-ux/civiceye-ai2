@@ -1,7 +1,10 @@
 stages:
   - compliance
+  - format
   - lint
+  - type_check
   - test
+  - coverage
   - audit
   - build
 
@@ -19,14 +22,14 @@ pre-commit:check:
   script:
     - pre-commit run --all-files
 
-variables:
-  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
-
-cache:
-  paths:
-    - .cache/pip
-    - frontend/citizen-app/node_modules/
-    - frontend/admin-dashboard/node_modules/
+python:format:
+  image: python:3.12-slim
+  stage: format
+  before_script:
+    - pip install ruff
+  script:
+    - ruff format --check .
+    - ruff check .
 
 python:lint:
   image: python:3.12-slim
@@ -42,6 +45,15 @@ python:lint:
     - semgrep scan --config auto
     - find backend ai-service -name "*.py" | xargs pyupgrade --py311-plus
 
+python:type_check:
+  image: python:3.12-slim
+  stage: type_check
+  before_script:
+    - python -m pip install --upgrade pip
+    - pip install -r backend/requirements.txt -r ai-service/requirements.txt -r requirements-dev.txt
+  script:
+    - mypy --config-file mypy.ini backend ai-service scripts
+
 python:test:
   image: python:3.12-slim
   stage: test
@@ -56,6 +68,18 @@ python:test:
       coverage_report:
         coverage_format: cobertura
         path: coverage.xml
+    paths:
+      - coverage.xml
+
+python:coverage:
+  image: python:3.12-slim
+  stage: coverage
+  needs: ["python:test"]
+  script:
+    - pip install coverage
+    - coverage report
+    - coverage xml
+  artifacts:
     paths:
       - coverage.xml
 

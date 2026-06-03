@@ -1,10 +1,12 @@
 bandit>=1.8
 coverage>=7.6
 flake8>=7.1
+mypy>=1.13
 pip-audit>=2.7
 pre-commit>=4.0
 pylint>=3.3
 pytest-cov>=6.0
+ruff>=0.8
 semgrep>=1.95
 vulture>=2.13
 
