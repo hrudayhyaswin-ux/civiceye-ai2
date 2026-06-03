@@ -99,6 +99,23 @@ def run_compliance():
         total_checks += 1
         if check_file(path, desc):
             score += 1
+    
+    # Check for Ruff in CI
+    ruff_integrated = False
+    ci_files = [".gitlab-ci.yml", ".gitlab/ci/lint.yml"]
+    for ci_file in ci_files:
+        if Path(ci_file).exists():
+            with open(ci_file, 'r') as f:
+                if "ruff" in f.read().lower():
+                    ruff_integrated = True
+                    break
+    
+    total_checks += 1
+    if ruff_integrated:
+        print("✅ Ruff (Linting/Formatting) integrated in CI")
+        score += 1
+    else:
+        print("❌ Ruff (Linting/Formatting) - Not found in CI")
 
     print("\n🛡️ Security & Audits")
     # Check if audit commands are present in CI or if audit reports exist
