@@ -7,3 +7,10 @@ security:audit:
   script:
     - pip-audit -r backend/requirements.txt -r ai-service/requirements.txt
     - trufflehog filesystem . --no-update
+
+frontend:audit:
+  image: node:22-alpine
+  stage: audit
+  script:
+    - cd frontend/citizen-app && npm audit || echo "Audit found vulnerabilities"
+    - cd ../admin-dashboard && npm audit || echo "Audit found vulnerabilities"

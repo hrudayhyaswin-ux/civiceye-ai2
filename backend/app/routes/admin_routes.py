@@ -1,3 +1,7 @@
+# Copyright (C) 2026 Swecha
+# Licensed under the GNU Affero General Public License v3.0
+# See LICENSE file in the project root for full license information.
+
 from flask import Blueprint, request
 
 from ..services.complaint_service import list_complaints, stats, update_status

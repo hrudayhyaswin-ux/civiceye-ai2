@@ -15,18 +15,25 @@ AI-Powered Multilingual Civic Grievance Intelligence Platform
 
 ### Technologies
 
-* Flask or Django REST Framework
-* PostgreSQL / MangoDB
+* Flask (Backend)
+* SQLite (Database)
+* React + Vite (Frontend)
+* AssemblyAI / Gemini (STT)
 
 ---
 
 * Summarization
+* Classification
+* Priority Detection
+* Entity Extraction
 
 ### Technologies
 
 * OpenRouter
 * Hugging Face
-* Python
+* Gemini API
+* AssemblyAI
+* Python / FastAPI
 
 ---
 

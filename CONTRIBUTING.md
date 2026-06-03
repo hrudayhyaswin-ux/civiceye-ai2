@@ -32,11 +32,11 @@ Before contributing, ensure you have:
 
 # Project Setup
 
-## 1. Fork and Clone Repository
+## 1. Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/civiceye.git
-cd civiceye
+git clone https://code.swecha.org/hruday25/civicaiv2.git
+cd civicaiv2
 ```
 
 ## 2. Create Virtual Environment
@@ -44,28 +44,30 @@ cd civiceye
 ### Windows
 
 ```bash
-python -m venv venv
-venv\Scripts\activate
+python -m venv .venv
+.venv\Scripts\activate
 ```
 
 ### macOS / Linux
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
 ```
 
-## 3. Install Backend Dependencies
+## 3. Install Dependencies
+
+Install both Backend and AI service dependencies:
 
 ```bash
-pip install -r requirements.txt
+pip install -r backend/requirements.txt -r ai-service/requirements.txt -r requirements-dev.txt
 ```
 
 ## 4. Install Frontend Dependencies
 
 ```bash
-cd frontend
-npm install
+cd frontend/citizen-app && npm install
+cd ../admin-dashboard && npm install
 ```
 
 ## 5. Run Development Environment
@@ -73,12 +75,21 @@ npm install
 Backend:
 
 ```bash
-python app.py
+cd backend
+python run.py
+```
+
+AI Service:
+
+```bash
+cd ai-service
+uvicorn main:app --reload --port 8001
 ```
 
 Frontend:
 
 ```bash
+cd frontend/citizen-app
 npm run dev
 ```
 
@@ -86,12 +97,12 @@ npm run dev
 
 # How to Contribute
 
-1. Fork the repository
+1. Fork the repository (if applicable)
 
 2. Create a new branch
 
 ```bash
-git checkout -b feature/your-feature-name
+git checkout -b feat/your-feature-name
 ```
 
 3. Make your changes
