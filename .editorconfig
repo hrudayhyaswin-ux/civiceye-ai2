@@ -13,3 +13,4 @@ indent_size = 4
 
 [*.{md,yml,yaml}]
 trim_trailing_whitespace = false
+
