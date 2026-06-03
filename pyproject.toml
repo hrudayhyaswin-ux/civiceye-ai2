@@ -1,3 +1,16 @@
+[project]
+name = "civiceye-ai"
+version = "0.1.0"
+description = "Citizen Issue Reporting Platform"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.uv]
+dev-dependencies = [
+    "ruff>=0.8.0",
+]
+
 [tool.pytest.ini_options]
 testpaths = ["backend/tests"]
 pythonpath = ["backend", "ai-service"]

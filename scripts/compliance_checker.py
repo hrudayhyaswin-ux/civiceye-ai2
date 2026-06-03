@@ -127,25 +127,12 @@ def run_compliance():
     
     total_checks += 1
     if ruff_integrated:
-        print("✅ Lint Tool (Ruff) integrated in CI")
+        print("✅ CI Pipeline — Add Ruff for linting")
         score += 1
     else:
-        print("❌ Lint Tool (Ruff) - Not found in CI")
+        print("❌ CI Pipeline — Add Ruff for linting")
 
-    # Check for Test Tool (Pytest)
-    pytest_config_found = False
-    if Path("pyproject.toml").exists():
-        with open("pyproject.toml", 'r') as f:
-            if "pytest" in f.read().lower():
-                pytest_config_found = True
-    
-    total_checks += 1
-    if pytest_config_found:
-        print("✅ Test Tool (Pytest) configured")
-        score += 1
-    else:
-        print("❌ Test Tool (Pytest) - Not configured")
-
+    print("\n🧪 test")
     # Check for Test Job in CI
     test_job_present = False
     ci_test_files = [".gitlab-ci.yml", ".gitlab/ci/test.yml"]
@@ -159,11 +146,26 @@ def run_compliance():
     
     total_checks += 1
     if test_job_present:
-        print("✅ Test Job integrated in CI")
+        print("✅ Job")
         score += 1
     else:
-        print("❌ Test Job - Not found in CI")
+        print("❌ Job")
 
+    # Check for Test Tool (Pytest)
+    pytest_config_found = False
+    if Path("pyproject.toml").exists():
+        with open("pyproject.toml", 'r') as f:
+            if "pytest" in f.read().lower():
+                pytest_config_found = True
+    
+    total_checks += 1
+    if pytest_config_found:
+        print("✅ Tool")
+        score += 1
+    else:
+        print("❌ Tool")
+
+    print("\n🧹 lint")
     # Check for Lint Job in CI
     lint_job_present = False
     for ci_file in ci_files:
@@ -176,10 +178,17 @@ def run_compliance():
     
     total_checks += 1
     if lint_job_present:
-        print("✅ Lint Job integrated in CI")
+        print("✅ Job")
         score += 1
     else:
-        print("❌ Lint Job - Not found in CI")
+        print("❌ Job")
+
+    total_checks += 1
+    if ruff_integrated:
+        print("✅ Tool")
+        score += 1
+    else:
+        print("❌ Tool")
 
     print("\n🛡️ Security & Audits")
     # Check if audit commands are present in CI or if audit reports exist
