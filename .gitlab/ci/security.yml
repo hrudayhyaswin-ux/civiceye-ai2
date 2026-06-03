@@ -3,14 +3,20 @@ security:audit:
   stage: audit
   before_script:
     - python -m pip install --upgrade pip
-    - pip install pip-audit trufflehog
+    - pip install pip-audit trufflehog uv
   script:
+    - echo "Running pip-audit..."
     - pip-audit -r backend/requirements.txt -r ai-service/requirements.txt
+    - echo "Running uv audit (preview)..."
+    - uv audit --preview-features audit || echo "uv audit not applicable or failed"
+    - echo "Running trufflehog..."
     - trufflehog filesystem . --no-update
 
 frontend:audit:
   image: node:22-alpine
   stage: audit
   script:
-    - cd frontend/citizen-app && npm audit || echo "Audit found vulnerabilities"
-    - cd ../admin-dashboard && npm audit || echo "Audit found vulnerabilities"
+    - echo "Auditing citizen-app..."
+    - cd frontend/citizen-app && npm audit || echo "Audit found vulnerabilities in citizen-app"
+    - echo "Auditing admin-dashboard..."
+    - cd ../admin-dashboard && npm audit || echo "Audit found vulnerabilities in admin-dashboard"

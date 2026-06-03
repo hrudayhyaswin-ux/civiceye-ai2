@@ -56,6 +56,12 @@ repos:
       - id: pylint
         args: ["-rn", "-sn"]
 
+  - repo: https://github.com/pypa/pip-audit
+    rev: v2.7.3
+    hooks:
+      - id: pip-audit
+        args: ["-r", "backend/requirements.txt", "-r", "ai-service/requirements.txt"]
+
   - repo: https://github.com/jendrikseipp/vulture
     rev: v2.13
     hooks:

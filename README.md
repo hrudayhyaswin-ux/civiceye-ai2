@@ -184,6 +184,28 @@ civiceye/
 
 ---
 
+## 🛡️ Security & Audits
+
+We take security seriously. The following audits are integrated into our development workflow:
+
+- **Python Audit**: `pip-audit` and `uv audit` check for known vulnerabilities in backend and AI service dependencies.
+- **Node.js Audit**: `npm audit` scans frontend dependencies for security risks.
+- **Secret Scanning**: `gitleaks` and `trufflehog` prevent accidental exposure of secrets and API keys.
+- **SAST**: `bandit` and `semgrep` perform static analysis to find security flaws in the code.
+
+To run audits locally:
+
+```bash
+# Python
+pip-audit -r backend/requirements.txt -r ai-service/requirements.txt
+
+# Frontend
+cd frontend/citizen-app && npm audit
+cd ../admin-dashboard && npm audit
+```
+
+---
+
 ## 🤝 Contributing
 
 We welcome contributions! Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting a pull request.

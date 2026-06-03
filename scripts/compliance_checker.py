@@ -100,6 +100,22 @@ def run_compliance():
         if check_file(path, desc):
             score += 1
 
+    print("\n🛡️ Security & Audits")
+    # Check if audit commands are present in CI or if audit reports exist
+    audit_integrated = False
+    if Path(".gitlab/ci/security.yml").exists():
+        with open(".gitlab/ci/security.yml", 'r') as f:
+            content = f.read()
+            if "pip-audit" in content and "npm audit" in content:
+                audit_integrated = True
+    
+    total_checks += 1
+    if audit_integrated:
+        print("✅ Dependency Audit (pip-audit/npm audit) integrated in CI")
+        score += 1
+    else:
+        print("❌ Dependency Audit (pip-audit/npm audit) - Not found in CI")
+
     print("\n📐 Spec-Kit (Spec-Driven Development)")
     spec_kit = [
         (".specify", ".specify/ setup"),
