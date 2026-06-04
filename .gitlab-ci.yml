@@ -25,7 +25,20 @@ include:
   - local: '.gitlab/ci/lint.yml'
   - local: '.gitlab/ci/test.yml'
   - local: '.gitlab/ci/security.yml'
+ # Add a lint job
+lint:
+  stage: lint
+  script:
+    - pip install flake8
+    - flake8 .
 
+# Add a test job
+test:
+  stage: test
+  script:
+    - pip install pytest
+    - pytest
+    
 compliance:check:
   image: python:3.12-slim
   stage: compliance
