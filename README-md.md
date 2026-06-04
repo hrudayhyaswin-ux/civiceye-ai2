@@ -271,40 +271,39 @@ curl -X POST http://localhost:8000/ai/classify \
 
 # Notes
 
-### Backend Resilience
+Backend Reliability
 
-Works even when AI services fail using fallback routing.
+Ensures continuous operation even when AI services are unavailable through intelligent fallback mechanisms and alternative routing strategies.
 
-### AI Enhancement Layer
+AI Intelligence Layer
 
-Provides:
+Delivers advanced capabilities such as:
 
-* Classification
-* Priority
-* Department Mapping
-* Language Detection
-* Summaries
-* Confidence Scores
+* Complaint Classification
+* Priority Assessment
+* Department Assignment
+* Language Identification
+* Automated Summarization
+* Confidence Scoring
 
-### Frontend Features
+Frontend Capabilities
 
-* Authentication
-* Complaint Tracking
-* Admin Workflows
-* Filtering
-* Status Management
-* Role-based Access
+* Secure Authentication
+* Complaint Monitoring & Tracking
+* Administrative Dashboards
+* Advanced Search & Filtering
+* Status Updates & Management
+* Role-Based Access Control
 
----
+Project Overview
 
-# Project Pitch Summary
+CivicEye AI enhances public grievance management by making complaints:
 
-CivicEye AI strengthens existing grievance systems by making complaints:
+* Simpler to submit
+* Easier to interpret
+* Faster to route
+* More efficient to resolve
 
-* Easier to file
-* Easier to understand
-* Easier to route
-* Easier to resolve
+through multilingual voice support, AI-powered complaint structuring, automated routing, and smart administrative workflows.
 
-through multilingual voice input, AI structuring, smart routing, and intelligent admin workflows.
 
