@@ -3,7 +3,8 @@
 # See LICENSE file in the project root for full license information.
 
 import json
-from datetime import datetime, timezone
+import os
+from datetime import UTC, datetime
 
 import requests
 from flask import current_app
@@ -12,7 +13,6 @@ from ..extensions import get_connection
 from .duplicate_detection_service import duplicate_hint
 from .geocoding_service import normalize_location
 from .ticket_service import generate_ticket_id
-
 
 DEPARTMENT_BY_HINT = {
     "Road Damage": "Roads",
@@ -25,7 +25,7 @@ DEPARTMENT_BY_HINT = {
 
 
 def now_iso():
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 def fallback_analysis(payload):
@@ -55,7 +55,7 @@ def analyze(payload):
             response = requests.post(f"{current_app.config['AI_SERVICE_URL']}/analyze", data=data, files=files, timeout=10)
         else:
             response = requests.post(f"{current_app.config['AI_SERVICE_URL']}/analyze", json=payload, timeout=4)
-        
+
         response.raise_for_status()
         return response.json()
     except requests.RequestException as e:
@@ -72,8 +72,6 @@ def row_to_dict(row):
     return item
 
 
-import os
-
 def create_complaint(payload):
     # Handle voice note saving before analysis pops it
     voice_note = payload.get("voice_note")
@@ -84,7 +82,7 @@ def create_complaint(payload):
         os.makedirs(upload_dir, exist_ok=True)
         filename = f"{ticket_id_temp}_voice.webm"
         voice_path = os.path.join(upload_dir, filename)
-        
+
         # Save a copy locally
         voice_note.save(voice_path)
         # Reset file pointer for the subsequent AI service call
@@ -95,7 +93,7 @@ def create_complaint(payload):
     ticket_id = ticket_id_temp if voice_path else generate_ticket_id()
     location = normalize_location(payload.get("location"))
     timeline = [{"label": "Complaint received", "at": created}, {"label": f"Routed to {analysis['department']}", "at": created}]
-    
+
     # Add transcript to description if it exists
     final_description = (payload.get("description") or "").strip()
     if analysis.get("transcript"):
@@ -139,11 +137,14 @@ def list_complaints(filters):
     query = "SELECT * FROM complaints WHERE 1=1"
     params = []
     if filters.get("status"):
-        query += " AND status = ?"; params.append(filters["status"])
+        query += " AND status = ?"
+        params.append(filters["status"])
     if filters.get("priority"):
-        query += " AND priority = ?"; params.append(filters["priority"])
+        query += " AND priority = ?"
+        params.append(filters["priority"])
     if filters.get("department"):
-        query += " AND department = ?"; params.append(filters["department"])
+        query += " AND department = ?"
+        params.append(filters["department"])
     if filters.get("q"):
         query += " AND (title LIKE ? OR ticket_id LIKE ? OR location_json LIKE ?)"
         term = f"%{filters['q']}%"
@@ -173,4 +174,3 @@ def stats():
         "resolved": len([item for item in complaints if item["status"] == "Resolved"]),
         "duplicate_risk": round(sum(item["duplicate_confidence"] for item in complaints) / len(complaints)) if complaints else 0,
     }
-

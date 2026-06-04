@@ -3,8 +3,10 @@
 # See LICENSE file in the project root for full license information.
 
 import os
-import requests
 import time
+
+import requests
+
 
 def transcribe(audio_content):
     api_key = os.getenv("ASSEMBLYAI_API_KEY")
@@ -19,20 +21,20 @@ def transcribe(audio_content):
     # Step 1: Upload the audio
     upload_url = "https://api.assemblyai.com/v2/upload"
     response = requests.post(upload_url, headers=headers, data=audio_content)
-    
+
     if response.status_code != 200:
         return {"text": f"STT Error: Upload failed ({response.status_code})", "provider": "assemblyai"}
-    
+
     upload_url = response.json()["upload_url"]
 
     # Step 2: Request transcription
     transcript_endpoint = "https://api.assemblyai.com/v2/transcript"
     json_data = {"audio_url": upload_url}
     response = requests.post(transcript_endpoint, json=json_data, headers=headers)
-    
+
     if response.status_code != 200:
-        return {"text": f"STT Error: Transcription request failed", "provider": "assemblyai"}
-    
+        return {"text": "STT Error: Transcription request failed", "provider": "assemblyai"}
+
     transcript_id = response.json()["id"]
     polling_endpoint = f"https://api.assemblyai.com/v2/transcript/{transcript_id}"
 
@@ -49,5 +51,5 @@ def transcribe(audio_content):
             }
         elif status == "error":
             return {"text": f"STT Error: {polling_response.json().get('error')}", "provider": "assemblyai"}
-        
+
         time.sleep(1)

@@ -2,15 +2,14 @@
 # Licensed under the GNU Affero General Public License v3.0
 # See LICENSE file in the project root for full license information.
 
-from pathlib import Path
 import sys
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.append(str(ROOT / "backend"))
 
-from app import create_app
-from app.services.complaint_service import create_complaint
-
+from app import create_app  # noqa: E402
+from app.services.complaint_service import create_complaint  # noqa: E402
 
 DEMO_COMPLAINTS = [
     {"title": "Open manhole near bus stop", "description": "Danger near school gate and bus stop. Needs urgent barricading.", "category_hint": "Road Damage", "location": {"address": "MG Road, Ward 12"}},

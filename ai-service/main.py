@@ -2,18 +2,17 @@
 # Licensed under the GNU Affero General Public License v3.0
 # See LICENSE file in the project root for full license information.
 
-from fastapi import FastAPI, UploadFile, File, Form
-from pydantic import BaseModel, Field
 import json
-from typing import Optional
+import os
 
+from fastapi import FastAPI, File, Form, UploadFile
 from models.classify_complaint import classify
 from models.detect_entities import detect_entities
 from models.duplicate_checker import duplicate_confidence
 from models.prioritize_issue import prioritize
 from providers.assemblyai_client import transcribe as transcribe_assembly
 from providers.gemini_client import transcribe_with_gemini
-import os
+from pydantic import BaseModel, Field
 
 app = FastAPI(title="CivicEye AI Service")
 
@@ -41,9 +40,9 @@ def health():
 
 @app.post("/analyze")
 async def analyze(
-    payload: Optional[str] = Form(None), 
-    voice_note: Optional[UploadFile] = File(None),
-    json_payload: Optional[ComplaintPayload] = None
+    payload: str | None = Form(None),
+    voice_note: UploadFile | None = File(None),
+    json_payload: ComplaintPayload | None = None
 ):
     if payload:
         data = ComplaintPayload(**json.loads(payload))
@@ -53,7 +52,7 @@ async def analyze(
         data = ComplaintPayload()
 
     description = data.description
-    
+
     if voice_note:
         # Save or process voice note
         content = await voice_note.read()
@@ -68,7 +67,7 @@ async def analyze(
     priority = prioritize(data.title, description, category)
     duplicate = duplicate_confidence(description)
     summary = summarize(description, entities)
-    
+
     return {
         "category": category,
         "department": department,

@@ -11,8 +11,6 @@ from .routes.admin_routes import admin_bp
 from .routes.auth_routes import auth_bp
 from .routes.complaint_routes import complaint_bp
 from .routes.health_routes import health_bp
-
-
 from .utils.response import fail
 
 
@@ -36,8 +34,9 @@ def create_app(config_class=Config):
 
     @app.get("/api/uploads/media/<filename>")
     def serve_media(filename):
-        from flask import send_from_directory
         import os
+
+        from flask import send_from_directory
         upload_dir = os.path.join(app.root_path, "..", "uploads", "media")
         return send_from_directory(upload_dir, filename)
 

@@ -5,7 +5,6 @@
 import sqlite3
 from pathlib import Path
 
-
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS complaints (
   id INTEGER PRIMARY KEY AUTOINCREMENT,

@@ -2,7 +2,10 @@
 # Licensed under the GNU Affero General Public License v3.0
 # See LICENSE file in the project root for full license information.
 
-from flask import Blueprint, request
+import json
+import os
+
+from flask import Blueprint, current_app, request
 
 from ..services.complaint_service import create_complaint, get_complaint
 from ..utils.response import fail, ok
@@ -18,19 +21,16 @@ def submit_complaint():
     else:
         # Handle multipart/form-data
         payload = request.form.to_dict()
-        
+
         # Parse JSON string back to dict if it exists
         if "location" in payload and isinstance(payload["location"], str):
-            import json
             try:
                 payload["location"] = json.loads(payload["location"])
-            except:
+            except Exception:
                 payload["location"] = {}
-        
+
         # Handle attachments
         attachments = []
-        import os
-        from flask import current_app
         upload_dir = os.path.join(current_app.root_path, "..", "uploads", "media")
         os.makedirs(upload_dir, exist_ok=True)
 
@@ -52,7 +52,7 @@ def submit_complaint():
 
     # Debug log to see what the backend is actually receiving
     print(f"DEBUG: Received payload keys: {list(payload.keys())}")
-    
+
     error = validate_complaint(payload)
     if error:
         return fail(error, 422)

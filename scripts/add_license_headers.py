@@ -19,7 +19,7 @@ JS_HEADER = """/*
 """
 
 def add_header(filepath, header):
-    with open(filepath, 'r') as f:
+    with open(filepath) as f:
         content = f.read()
     if content.startswith(header.strip()[:20]):
         return
@@ -33,7 +33,7 @@ for root, dirs, files in os.walk('.'):
         dirs.remove('.venv')
     if '.git' in dirs:
         dirs.remove('.git')
-        
+
     for file in files:
         if file.endswith('.py'):
             add_header(os.path.join(root, file), HEADER)

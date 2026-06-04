@@ -1,0 +1,24 @@
+meta {
+  name: Submit Complaint
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/api/complaints
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "Broken Street Light",
+    "description": "The street light in front of house 42 is not working.",
+    "category_hint": "Street Light",
+    "location": {
+      "address": "42 Galaxy Way",
+      "lat": 12.9716,
+      "lng": 77.5946
+    }
+  }
+}

@@ -1,0 +1,16 @@
+meta {
+  name: List Complaints
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/api/complaints
+  body: none
+  auth: none
+}
+
+params:query {
+  ~status: New
+  ~priority: High
+}

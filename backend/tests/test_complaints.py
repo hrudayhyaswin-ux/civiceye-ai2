@@ -2,8 +2,8 @@
 # Licensed under the GNU Affero General Public License v3.0
 # See LICENSE file in the project root for full license information.
 
-from pathlib import Path
 import sys
+from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 

@@ -1,12 +1,18 @@
+python:ruff:
+  image: python:3.12-slim
+  stage: lint
+  before_script:
+    - pip install uv
+  script:
+    - uv run --with ruff ruff check .
+
 python:lint:
   image: python:3.12-slim
   stage: lint
   before_script:
     - python -m pip install --upgrade pip
-    - pip install -r requirements-dev.txt semgrep pyupgrade ruff uv
+    - pip install -r requirements-dev.txt semgrep pyupgrade uv
   script:
-    - uv run ruff check .
-    - ruff check .
     - flake8 backend ai-service scripts
     - pylint backend ai-service scripts
     - bandit -c .bandit -r backend ai-service

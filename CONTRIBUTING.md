@@ -146,6 +146,18 @@ git push origin feature/your-feature-name
 * Perform proper validation for all incoming requests.
 * Implement robust error handling and logging.
 * Create reusable business logic and service layers.
+* **API Testing:** We use [Bruno](https://www.usebruno.com/) for API testing and documentation. You can find the collection in the `bruno/` directory.
+
+---
+
+# API Testing with Bruno
+
+We use Bruno, an open-source, Git-friendly API client, to share and test our API endpoints.
+
+1.  **Download Bruno:** Get it from [usebruno.com](https://www.usebruno.com/downloads).
+2.  **Open Collection:** In Bruno, select "Open Collection" and choose the `bruno/` folder in the project root.
+3.  **Select Environment:** Use the "Local" environment from the environment selector in the top-right corner.
+4.  **Run Requests:** You can now run health checks, login, and test complaint submissions locally.
 
 ## AI Guidelines
 
