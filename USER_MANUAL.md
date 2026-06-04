@@ -16,65 +16,94 @@ Key capabilities include:
 - Complaint tracking for citizens.
 - Complaint management and analytics for administrators.
 
-## Citizen Portal
+# Citizen Portal User Guide
 
-### Step 1: Open the Portal
-1. Open the CivicEye AI India portal.
-2. No login is required.
-3. You can start reporting an issue directly.
+## Step 1: Access the Portal
 
-### Step 2: Create a Complaint
-1. On the dashboard, click **Report Issue**.
-2. Choose one or more of the following input methods:
+Open the CivicEye AI India Portal using your web browser.
 
-#### Text Input
-Type your complaint in any supported language.
+* No registration or login is required.
+* You can begin submitting a complaint immediately.
+
+---
+
+## Step 2: Submit a Complaint
+
+From the home dashboard, select **Report an Issue**.
+
+You may provide complaint details using one or more of the following methods:
+
+### Text Submission
+
+Enter your complaint in any supported language.
 
 **Example:**
-> Street lights are not working near the bus stop.
 
-#### Voice Input
-1. Click the microphone button.
-2. Speak naturally and clearly.
-3. The system automatically converts your speech into text.
+> Street lights near the bus stand have not been functioning for several days.
 
-#### Proof image Upload
-Upload relevant images such as:
-- Road damage.
-- Garbage accumulation.
-- Water leakage.
-- Public infrastructure issues.
+### Voice Submission
 
-#### Location Input
-- Allow location access for automatic detection, or
-- Select or enter the location manually.
+* Click the **Microphone** icon.
+* Speak your complaint clearly.
+* The system automatically converts your speech into text.
 
-### Step 3: AI Analysis
-After the complaint is entered, the system automatically performs the following actions:
-- Converts voice input to text.
-- Detects the complaint language.
-- Generates a concise summary.
-- Identifies the complaint category.
-- Suggests the appropriate government department.
-- Assigns a priority level.
+### Image Upload
 
-### Step 4: Review and Submit
-Before submission, review the generated complaint details:
-- Complaint summary.
-- Category.
-- Suggested department.
-- Priority score.
+Upload supporting photographs related to the issue, such as:
 
-If everything is correct, click **Submit**.
+* Potholes or damaged roads
+* Overflowing garbage bins
+* Water leakage problems
+* Damaged public infrastructure
 
-### Step 5: Track Complaint Status
-1. Navigate to **My Complaints**.
-2. View the following details for each complaint:
-- Ticket ID.
-- Current status.
-- Assigned department.
-- Submission date.
-- Resolution updates.
+### Location Information
+
+You can:
+
+* Allow automatic location detection, or
+* Manually enter or select the complaint location.
+
+---
+
+## Step 3: AI-Powered Processing
+
+Once the complaint is entered, the platform automatically:
+
+* Converts voice recordings into text.
+* Identifies the language of the complaint.
+* Generates a brief complaint summary.
+* Classifies the issue category.
+* Recommends the appropriate government department.
+* Assigns a priority level based on urgency.
+
+---
+
+## Step 4: Verify and Submit
+
+Review the generated complaint details before submission:
+
+* Complaint summary
+* Issue category
+* Recommended department
+* Priority level
+
+If the information is accurate, click **Submit Complaint**.
+
+---
+
+## Step 5: Monitor Complaint Progress
+
+Go to **My Complaints** to track submitted issues.
+
+The portal displays:
+
+* Complaint/Ticket ID
+* Current complaint status
+* Assigned department
+* Date of submission
+* Resolution and progress updates
+
+You can check the status of your complaint at any time through the portal.
 
 ## Admin Dashboard
 
