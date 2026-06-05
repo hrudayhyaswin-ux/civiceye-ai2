@@ -1,0 +1,30 @@
+services:
+  # 1. The Main Backend API (Flask)
+  - type: web
+    name: civiceye-backend
+    env: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && gunicorn run:app
+    envVars:
+      - key: DATABASE_URL
+        value: sqlite:///civiceye.db
+      - key: AI_SERVICE_URL
+        # This will be the internal URL of the AI service
+        fromService:
+          type: web
+          name: civiceye-ai
+          property: host
+      - key: SECRET_KEY
+        generateValue: true
+
+  # 2. The AI Triage Service (FastAPI)
+  - type: web
+    name: civiceye-ai
+    env: python
+    buildCommand: pip install -r ai-service/requirements.txt
+    startCommand: cd ai-service && uvicorn main:app --host 0.0.0.0 --port 10000
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: GEMINI_API_KEY
+        sync: false # User must set this in Render dashboard

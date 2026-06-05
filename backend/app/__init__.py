@@ -17,7 +17,12 @@ from .utils.response import fail
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
-    CORS(app)
+    CORS(app, resources={r"/*": {
+        "origins": "*",
+        "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+        "allow_headers": ["Content-Type", "Authorization", "Bypass-Tunnel-Reminder", "X-Requested-With", "Accept"],
+        "expose_headers": ["Content-Type", "Authorization"]
+    }})
 
     init_database(app.config["DATABASE_PATH"])
 

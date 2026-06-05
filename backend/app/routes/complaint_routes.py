@@ -16,6 +16,7 @@ complaint_bp = Blueprint("complaints", __name__)
 
 @complaint_bp.post("/complaints")
 def submit_complaint():
+    print(f"DEBUG: Received headers: {dict(request.headers)}")
     if request.is_json:
         payload = request.get_json()
     else:

@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS complaints (
   location_json TEXT NOT NULL,
   attachments_json TEXT NOT NULL,
   timeline_json TEXT NOT NULL,
+  voice_note_path TEXT,
   created_at TEXT NOT NULL,
   updated_at TEXT NOT NULL
 );

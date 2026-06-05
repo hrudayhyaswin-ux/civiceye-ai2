@@ -49,7 +49,12 @@ export default function ComplaintForm({ language, onSuccess }) {
       const result = await submitComplaint(formData);
       onSuccess(result.ticket_id);
     } catch (err) {
-      setError(err.response?.data?.message || "Unable to submit right now. Check backend service.");
+      console.error("Submission error:", err);
+      let msg = err.response?.data?.message || `Unable to submit (${err.message}).`;
+      if (err.message === "Network Error") {
+        msg = "Network Error: Please click 'Click to Continue' at https://civiceye-india-server.loca.lt first, then try again.";
+      }
+      setError(msg);
     } finally {
       setBusy(false);
     }

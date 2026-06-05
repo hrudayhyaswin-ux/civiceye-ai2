@@ -24,7 +24,8 @@ export default function Login({ onLogin }) {
         onLogin();
       }
     } catch (err) {
-      setError("Login failed. Check backend connection.");
+      console.error("Login error:", err);
+      setError(`Login failed (${err.message}). Check backend connection.`);
     } finally {
       setBusy(false);
     }
