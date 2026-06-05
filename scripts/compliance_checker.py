@@ -37,32 +37,32 @@ def run_compliance():  # noqa: C901
         score += 1
 
     # Check for Git Tags
-   # Check for Git Tags
-import subprocess
+    # Check for Git Tags
+    import subprocess
 
-try:
-    subprocess.run(
-        ["git", "fetch", "--tags"],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-        check=False,
-    )
+    try:
+        subprocess.run(
+            ["git", "fetch", "--tags"],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            check=False,
+        )
 
-    tags = subprocess.check_output(
-        ["git", "tag", "-l"],
-        stderr=subprocess.DEVNULL,
-    ).decode().strip()
+        tags = subprocess.check_output(
+            ["git", "tag", "-l"],
+            stderr=subprocess.DEVNULL,
+        ).decode().strip()
 
-    if tags:
-        print("✅ Git Tags")
-        score += 1
-    else:
-        print("❌ Git Tags")
-        print("How to fix: git tag v1.0.0")
-except Exception as e:
-    print(f"❌ Git Tags - Could not check tags: {e}")
+        if tags:
+            print("✅ Git Tags")
+            score += 1
+        else:
+            print("❌ Git Tags")
+            print("How to fix: git tag v1.0.0")
+    except Exception as e:
+        print(f"❌ Git Tags - Could not check tags: {e}")
 
-total_checks += 1
+    total_checks += 1
 
     print("\ndocumentation")
     docs = [
